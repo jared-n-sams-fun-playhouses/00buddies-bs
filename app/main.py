@@ -43,12 +43,12 @@ def move():
 
     us = get_our_snake(data)
 
-    right = get_point_from_direction('right', us['coords'][0])
+    right = get_point_from_direction('up', us['coords'][0])
 
     print(get_direction_from_point(us['coords'][0], right))
 
     return {
-        'move': 'right',
+        'move': 'up',
         'taunt': get_taunt()
         }
 
