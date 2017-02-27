@@ -12,8 +12,9 @@ def timing(f):
         ts = time()
         result = f(*args, **kw)
         te = time()
-        print('func:%r args:[%r, %r] took: %2.8f msec' % \
-            (f.__name__, args, kw, (te-ts) * 1000))
+        print(te-ts)
+        print('func:%r took: %0.5f msec' % \
+            (f.__name__, (te-ts) * 1000.0))
         return result
     return wrap
 
@@ -41,7 +42,7 @@ def get_our_snake(data):
     else:
         return {}
 
-@timing
+
 def get_direction_from_point(head, point):
     if point[0] == head[0]:
         if (point[1] + 1) == head[1]:
@@ -57,9 +58,16 @@ def get_direction_from_point(head, point):
 
 
 def get_point_from_direction(move, point):
-    return {
-        'up'   : [point[0], (point[1] - 1)],
-        'down' : [point[0], (point[1] + 1)],
-        'left' : [(point[0] - 1), point[1]],
-        'right': [(point[0] + 1), point[1]]
-        }.get(move, point)
+    if move == 'up':
+        return [point[0], (point[1] - 1)]
+
+    if move == 'down':
+        return [point[0], (point[1] + 1)]
+
+    if move == 'left':
+        return [(point[0] - 1), point[1]]
+
+    if move == 'right':
+        return [(point[0] + 1), point[1]]
+
+    return point

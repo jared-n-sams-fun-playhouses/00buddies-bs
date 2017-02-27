@@ -48,7 +48,7 @@ def move():
     print(get_direction_from_point(us['coords'][0], right))
 
     return {
-        'move': 'up',
+        'move': 'left',
         'taunt': get_taunt()
         }
 
